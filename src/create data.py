@@ -33,7 +33,7 @@ def create_list_of_users(num_users=1000):
 
 def create_list_of_items(num_items=100):
     """
-    Functio to create a list of item IDs, allowing for a max of 2000.
+    Function to create a list of item IDs, allowing for a max of 2000.
     :param num_items: Number of unique item IDs to create
     :return: A set of item IDs
     """

@@ -1,2 +1,8 @@
-20-Jul-22 15:53:13 - Running create_data.py...
-20-Jul-22 15:53:13 - Training data saved!
+25-Jul-22 17:20:21 - Running train_model.py...
+25-Jul-22 17:20:22 - Function `_wrapped_model` contains input name(s) USER_ID with unsupported characters which will be renamed to user_id in the SavedModel.
+25-Jul-22 17:20:22 - Assets written to: ../models/query_model_20220725-172021\assets
+25-Jul-22 17:20:22 - Function `_wrapped_model` contains input name(s) ITEM with unsupported characters which will be renamed to item in the SavedModel.
+25-Jul-22 17:20:22 - Assets written to: ../models/candidate_model_20220725-172021\assets
+25-Jul-22 17:20:23 - Function `_wrapped_model` contains input name(s) USER_ID with unsupported characters which will be renamed to user_id in the SavedModel.
+25-Jul-22 17:20:23 - Found untraced functions such as query_with_exclusions while saving (showing 1 of 1). These functions will not be directly callable after loading.
+25-Jul-22 17:20:23 - Assets written to: ../models/index_20220725-172021\assets
