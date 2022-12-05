@@ -18,13 +18,13 @@ logging.basicConfig(filename='create_data.log', encoding='utf-8',
 
 timestr = time.strftime("%Y%m%d-%H%M%S")
 tf.random.set_seed(12)
-training_size = 1
+val_size = 1
 
 df = pd.read_csv('../data/training_data.csv')
 
 # Create training and validation (if we want, obviously this data is just random, and we won't train anything decent)
-train = df.iloc[training_size:]
-val = df.head(training_size)
+train = df.iloc[val_size:]
+val = df.head(val_size)
 
 unique_id_df = train[['USER_ID']].drop_duplicates()
 unique_item_df = train[['ITEM']].drop_duplicates()
