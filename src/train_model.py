@@ -79,36 +79,31 @@ if __name__ == "__main__":
     )
 
     index = tfrs.layers.factorized_top_k.BruteForce(model.query_model, k=5)
-    index.index_from_dataset(unique_items_for_metrics.map(model.candidate_model))
+    # index.index_from_dataset(unique_items_for_metrics.map(model.candidate_model))
+    index.index_from_dataset(tf.data.Dataset.zip((items,
+                                                  unique_items_for_metrics.map(model.candidate_model))))
 
-    query = {'USER_ID': tf.constant(['abc123'])}
+    query = {'USER_ID': tf.constant(['o9cxw22n'])}
 
     _, items = index(query)
-    print(f"Recommendations for user: {items[0, :]}")
+    items = items.numpy().astype(str)
+    print(f"Recommendations for this user: {', '.join(items[0, :])}")
+
+    query = {'USER_ID': tf.constant(['unseen'])}
+    _, items = index(query)
+    items = items.numpy().astype(str)
+    print(f"Recommendations for this user: {', '.join(items[0, :])}")
 
     # Save models
-    model.query_model.save('../models/query_model_'+timestr)
-    model.candidate_model.save('../models/candidate_model_'+timestr)
-    weight_values = model.optimizer.get_weights()
-    with open('../models/optimizer_state.pkl', 'wb') as f:
-        pickle.dump(weight_values, f)
+    # model.query_model.save('../models/query_model_'+timestr)
+    # model.candidate_model.save('../models/candidate_model_'+timestr)
+    # weight_values = model.optimizer.get_weights()
+    # with open('../models/optimizer_state.pkl', 'wb') as f:
+    #     pickle.dump(weight_values, f)
 
     # Save the index.
-    path = '../models/index_'+timestr
-    index.save(path, include_optimizer=False)
+    # path = '../models/index_'+timestr
+    # index.save(path, include_optimizer=False)
 
     # Load index.
     # loaded = tf.keras.models.load_model(path)
-
-    # Recommendations using existing model:
-    # path = '../models/index_0.4'
-    # loaded_ix = tf.keras.models.load_model(path)
-    #
-    # query = {'cust_no': tf.constant(['104711']), 'gender': tf.constant([2.0])}
-    # scores, titles = loaded_ix(query)
-    #
-    # # exclusions = tf.constant([['349462', '449584', '409993', '409993', '409993']])
-    # # scores, titles = loaded_ix.query_with_exclusions(query, exclusions)
-    #
-    # print(f"Recommendations: {titles[0][:]}")
-    # exit()

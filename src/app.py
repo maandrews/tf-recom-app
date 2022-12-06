@@ -17,8 +17,9 @@ def index():
         userid = request.form['userid']
         query = {'USER_ID': tf.constant([str(userid)])}
         _, recoms = index(query)
-        # print(f"Recommendations: {titles[0][:]}") s0hghhgp
-        return render_template('index.html', pred=f"Recommendations: {recoms[0, :]}")
+        recoms = recoms.numpy().astype(str)
+        # print(f"Recommendations: {titles[0][:]}") o9cxw22n
+        return render_template('index.html', pred=f"Recommendations for this user: {', '.join(recoms[0, :])}")
 
     return render_template('index.html')
 
