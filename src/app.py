@@ -25,6 +25,6 @@ def index():
 
 
 if __name__ == '__main__':
-    path = '../models/index_20220725-172021'
+    path = '../models/index_20221206-162758'
     index = tf.keras.models.load_model(path)
     app.run()
