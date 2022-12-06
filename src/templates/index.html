@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Recommendation Model</title>
+    <title>Simple Recommender App</title>
 </head>
 <body>
-    Recommendations:
+    <form method=post enctype=multipart/form-data>
+        User ID:  <input type="text" name="userid"><br>
+        <input type="submit" value="Submit">
+   </form>
+    {{ pred }}
 </body>
 </html>
